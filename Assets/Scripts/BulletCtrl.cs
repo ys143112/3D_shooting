@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletCtrl : MonoBehaviour
 {
+    
 
     void Start()
     {
@@ -12,9 +13,9 @@ public class BulletCtrl : MonoBehaviour
 
     void Update()
     {
-        Move();
         Damage();
-
+        Check();
+        Move();
     }
 
     void Move()
@@ -22,13 +23,23 @@ public class BulletCtrl : MonoBehaviour
         transform.Translate(Vector3.left);
     }
 
+    void Check()
+    {
+        if (transform.position.z <= 0)
+        {
+            SendMessageUpwards("PlusVoid", 1f, SendMessageOptions.DontRequireReceiver);
+            Destroy(gameObject);
+        }
+
+
+    }
 
     void Damage()
     {
         RaycastHit hit = new RaycastHit();
 
         Ray ray = new Ray(transform.position, -transform.right);
-        Debug.DrawRay(transform.position, ray.direction * 100, Color.white);
+        //Debug.DrawRay(transform.position, ray.direction * 100, Color.white);
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
@@ -36,7 +47,6 @@ public class BulletCtrl : MonoBehaviour
             if (distance <= 10)
             {
                 hit.transform.GetComponent<CharacterCtrl>().hp -= 1;
-
                 Destroy(gameObject);
             }
 

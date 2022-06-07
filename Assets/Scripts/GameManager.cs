@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject bullet = null;
 
+    private float repeatLock = 0f;
+
     void Start()
     {
         
@@ -16,18 +18,23 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        Check();
+        repeatLock++;
+        if(repeatLock>=30)
+            SpawnBullet();
+
+    }
+    
+    void SpawnBullet()
+    {
+        GameObject child = Instantiate(bullet) as GameObject;
+        child.transform.SetParent(gameObject.transform, true);
+        child.transform.position = new Vector3(Random.Range(-50, 50), Random.Range(-7.5f, 92.5f),300);
+        repeatLock = 0;
+        
     }
 
-    void Check()
+    public void PlusVoid(int value)
     {
-        if(bullet!=null)
-        {
-            if (bullet.transform.position.z <= 0)
-            {
-                voidTime++;
-                Destroy(bullet.gameObject);
-            }
-        }
+        voidTime += value;
     }
 }
