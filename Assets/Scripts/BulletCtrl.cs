@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletCtrl : MonoBehaviour
 {
-    
+    bool setTrigger =false;
 
     void Start()
     {
@@ -34,6 +34,7 @@ public class BulletCtrl : MonoBehaviour
 
     }
 
+    //CharacterCtrl에서 총알을 잘 체크 못한다면
     void Damage()
     {
         RaycastHit hit = new RaycastHit();
@@ -43,14 +44,16 @@ public class BulletCtrl : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            float distance = (transform.position - hit.transform.position).magnitude;
-            if (distance <= 10)
+            if(hit.collider.gameObject.CompareTag("Player"))
             {
-                hit.transform.GetComponent<CharacterCtrl>().hp -= 1;
-                Destroy(gameObject);
+                float distance = (transform.position - hit.transform.position).magnitude;
+                if (distance <= 8)
+                {
+                    hit.transform.GetComponent<CharacterCtrl>().hp -= 1;
+                    Destroy(gameObject);
+                }
             }
-
         }
     }
-    
+
 }

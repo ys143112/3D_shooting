@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class UI_Ctrl : MonoBehaviour
 {
-    // Start is called before the first frame update
+    string voidTimes;
+    string distance;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        voidTimes = GameManager.Instance.voidTime.ToString();
+        distance = GameManager.Instance.NowDistance.ToString();
+    }
+
+    private void OnGUI()
+    {
+        if (GUI.Button(new Rect(0,0,100,100), voidTimes))
+        {
+            Debug.Log("bbuk U");
+        }
+        if (GUI.Button(new Rect(0, 100, 100, 100), distance+"km"))
+        {
+            Debug.Log("bbuk U");
+        }
     }
 }

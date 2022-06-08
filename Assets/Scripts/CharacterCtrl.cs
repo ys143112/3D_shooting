@@ -23,6 +23,7 @@ public class CharacterCtrl : MonoBehaviour
     {
         Move();
         StateCheck();
+        CheckBullet();
     }
 
     /// <summary>
@@ -54,5 +55,23 @@ public class CharacterCtrl : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    
+    void CheckBullet()
+    {
+        RaycastHit hit = new RaycastHit();
+        Ray ray = new Ray(transform.position, Vector3.forward);
+
+        if(Physics.Raycast(ray,out hit,Mathf.Infinity))
+        {
+            float distance = (hit.transform.position-transform.position ).magnitude;
+            if(distance<=10)
+            {
+                hp -= 1;
+                Destroy(hit.transform.gameObject);
+            }
+        }
+
     }
 }

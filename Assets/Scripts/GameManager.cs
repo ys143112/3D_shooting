@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingleTon<GameManager>
 {
     //플레이어가 총알을 회피한 횟수
     public float voidTime = 0f;
@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject bullet = null;
 
     private float repeatLock = 0f;
+
+    public float NowDistance = 0f;
 
     void Start()
     {
@@ -19,8 +21,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         repeatLock++;
-        if(repeatLock>=30)
+        if(repeatLock>=20)
             SpawnBullet();
+        NowDistance += Time.deltaTime*10;
 
     }
     
