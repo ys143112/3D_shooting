@@ -22,11 +22,9 @@ public class UI_Ctrl : MonoBehaviour
     {
         if (GUI.Button(new Rect(0,0,100,100), voidTimes))
         {
-            Debug.Log("bbuk U");
         }
         if (GUI.Button(new Rect(0, 100, 100, 100), distance+"km"))
         {
-            Debug.Log("bbuk U");
         }
     }
 }

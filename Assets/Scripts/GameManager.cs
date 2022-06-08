@@ -20,13 +20,17 @@ public class GameManager : SingleTon<GameManager>
 
     void Update()
     {
-        repeatLock++;
-        if(repeatLock>=20)
-            SpawnBullet();
-        NowDistance += Time.deltaTime*10;
+        //lockSpawn();
 
     }
     
+    void lockSpawn()
+    {
+        repeatLock++;
+        if (repeatLock >= 20)
+            SpawnBullet();
+        NowDistance += Time.deltaTime * 10;
+    }
     void SpawnBullet()
     {
         GameObject child = Instantiate(bullet) as GameObject;
