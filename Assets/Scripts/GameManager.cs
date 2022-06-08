@@ -13,6 +13,8 @@ public class GameManager : SingleTon<GameManager>
 
     public float NowDistance = 0f;
 
+    public GameObject InGame = null;
+
     void Start()
     {
         
@@ -20,7 +22,8 @@ public class GameManager : SingleTon<GameManager>
 
     void Update()
     {
-        //lockSpawn();
+        if(InGame.activeSelf==true)
+            lockSpawn();
 
     }
     

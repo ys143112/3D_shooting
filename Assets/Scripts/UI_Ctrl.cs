@@ -20,10 +20,10 @@ public class UI_Ctrl : MonoBehaviour
 
     private void OnGUI()
     {
-        if (GUI.Button(new Rect(0,0,100,100), voidTimes))
+        if (GUI.Button(new Rect(0,0,250,250), voidTimes))
         {
         }
-        if (GUI.Button(new Rect(0, 100, 100, 100), distance+"km"))
+        if (GUI.Button(new Rect(0, 250, 250, 250), distance+"km"))
         {
         }
     }

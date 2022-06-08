@@ -46,6 +46,7 @@ public class CameraCtrl : MonoBehaviour
         camTransform.position = posFirstTrans.position;
     }
 
+
     private void LateUpdate()
     {
         if (targetObj == null) return;

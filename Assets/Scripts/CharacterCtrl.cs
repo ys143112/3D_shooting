@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Mathf;
 
 public class CharacterCtrl : MonoBehaviour
 {
@@ -33,9 +34,14 @@ public class CharacterCtrl : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+        var position = transform.position;
 
-        Vector3 pos = new Vector3(horizontal, vertical, 0);
-        transform.Translate(pos * spd * Time.deltaTime, Space.World);
+        position += new Vector3(horizontal, vertical, 0) * spd * Time.deltaTime;
+        position.x = Clamp(position.x, -38, 38);
+        position.y = Clamp(position.y, 0, 80);
+
+        transform.position=position;
+
     }
 
     void StateCheck()
