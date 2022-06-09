@@ -8,6 +8,10 @@ public class CameraCtrl : MonoBehaviour
     //카메라 위치 캐싱 준비
     private Transform camTransform = null;
 
+    private bool camSwitch = false;
+
+
+
     //target
     public GameObject targetObj = null;
 
@@ -55,12 +59,24 @@ public class CameraCtrl : MonoBehaviour
         {
             targetObjTrans = targetObj.transform;
         }
-        switch (cameraState)
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            case CameraTypeState.Third:
+            if(camSwitch==true)
+            {
+                camSwitch = false;
+            }
+            else
+            {
+                camSwitch = true;
+            }
+            
+        }
+        switch (camSwitch)
+        {
+            case true:
                 ThirdCamera();
                 break;
-            case CameraTypeState.First:
+            case false:
                 FirstCamera();
                 break;
         }

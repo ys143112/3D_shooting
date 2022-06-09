@@ -30,7 +30,7 @@ public class GameManager : SingleTon<GameManager>
     void lockSpawn()
     {
         repeatLock++;
-        if (repeatLock >= 20)
+        if (repeatLock >= 45)
             SpawnBullet();
         NowDistance += Time.deltaTime * 10;
     }

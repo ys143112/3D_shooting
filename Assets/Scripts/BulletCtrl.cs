@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletCtrl : MonoBehaviour
 {
-    bool setTrigger =false;
+    private float spd = 1.1f;
 
     void Start()
     {
@@ -20,7 +20,8 @@ public class BulletCtrl : MonoBehaviour
 
     void Move()
     {
-        transform.Translate(Vector3.left);
+        transform.Translate(Vector3.left*spd);
+        
     }
 
     void Check()

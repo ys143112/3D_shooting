@@ -15,6 +15,8 @@ public class CharacterCtrl : MonoBehaviour
 
     private CharacterStateType CharacterState = CharacterStateType.Idle;
 
+    public Canvas canvas = null;
+
     void Start()
     {
         
@@ -56,7 +58,6 @@ public class CharacterCtrl : MonoBehaviour
             case CharacterStateType.Idle:
                 break;
             case CharacterStateType.Die:
-                
                 break;
             default:
                 break;
