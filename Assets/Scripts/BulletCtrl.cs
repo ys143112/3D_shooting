@@ -20,7 +20,7 @@ public class BulletCtrl : MonoBehaviour
 
     void Move()
     {
-        transform.Translate(Vector3.left*spd);
+        transform.Translate(Vector3.back*spd);
         
     }
 
@@ -40,7 +40,7 @@ public class BulletCtrl : MonoBehaviour
     {
         RaycastHit hit = new RaycastHit();
 
-        Ray ray = new Ray(transform.position, -transform.right);
+        Ray ray = new Ray(transform.position, -transform.forward);
         //Debug.DrawRay(transform.position, ray.direction * 100, Color.white);
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
