@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21570e48f247ca4e8d7ffd71b0e4c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spd: 25
+  spd: 50
   hp: 3
   canvas: {fileID: 702160292}
 --- !u!143 &206132872
@@ -403,7 +403,7 @@ Animator:
   m_GameObject: {fileID: 407784820}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 08b5672e8f69b4846b89cc84edb1978a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4294249a8f153764880ab8fee3251566, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1487,7 +1487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1180243150
 Transform:
   m_ObjectHideFlags: 0
@@ -2172,7 +2172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   voidTime: 0
-  bullet: {fileID: 6069582329109709630, guid: 0ae377483d7fda6438d4547fcee1afa4, type: 3}
+  bullet: {fileID: 8088598843807355583, guid: 0ae377483d7fda6438d4547fcee1afa4, type: 3}
   NowDistance: 0
   InGame: {fileID: 1180243149}
 --- !u!4 &1801449738
@@ -2703,7 +2703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2035337303
 Transform:
   m_ObjectHideFlags: 0
