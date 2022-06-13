@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.Mathf;
+using UnityEngine.Animations;
 
 public class CharacterCtrl : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class CharacterCtrl : MonoBehaviour
     private CharacterStateType CharacterState = CharacterStateType.Idle;
 
     public Canvas canvas = null;
+
 
     void Start()
     {
