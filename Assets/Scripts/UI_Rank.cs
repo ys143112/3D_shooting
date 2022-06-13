@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class UI_Rank : MonoBehaviour
 {
     public Text rankText = null;
+    
+    
 
     void Start()
     {

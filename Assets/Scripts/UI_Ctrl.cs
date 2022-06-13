@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UI_Ctrl : MonoBehaviour
 {
-    string voidTimes;
-    string distance;
+    private string voidTimes;
+    private string distance;
 
     void Start()
     {
