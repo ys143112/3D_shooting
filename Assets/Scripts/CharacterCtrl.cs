@@ -6,19 +6,18 @@ using UnityEngine.Animations;
 
 public class CharacterCtrl : MonoBehaviour
 {
-    //우주선 이동 속도
     public float spd = 25f;
 
-    //우주선이 탄환을 맞아도 사는 횟수(=목숨)
     public float hp = 3f;
 
     public enum CharacterStateType { Idle, Die }
 
     private CharacterStateType CharacterState = CharacterStateType.Idle;
 
-    public Canvas canvas = null;
+    public GameObject gameOverPanel = null;
+    public GameObject ingameUI = null;
 
-
+    public Animator animationMecanim = null;
     void Start()
     {
         
@@ -26,18 +25,21 @@ public class CharacterCtrl : MonoBehaviour
 
     void Update()
     {
-        Move();
         StateCheck();
         CheckBullet();
+        Move();
     }
 
-    /// <summary>
-    /// 우주선이 움직이는 함수
-    /// </summary>
     void Move()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
+        bool sflag = true;
+        if (horizontal !=0 || vertical != 0)
+        { 
+            sflag = false;
+        }
+        animationMecanim.SetBool("StateBool", sflag);
         var position = transform.position;
 
         position += new Vector3(horizontal, vertical, 0) * spd * Time.deltaTime;
@@ -45,8 +47,9 @@ public class CharacterCtrl : MonoBehaviour
         position.y = Clamp(position.y, 0, 80);
 
         transform.position=position;
-
     }
+
+
 
     void StateCheck()
     {
@@ -60,19 +63,24 @@ public class CharacterCtrl : MonoBehaviour
             case CharacterStateType.Idle:
                 break;
             case CharacterStateType.Die:
+                gameOverPanel.SetActive(true);
+                ingameUI.SetActive(false);
                 break;
             default:
                 break;
         }
+
     }
+
+    
 
     
     void CheckBullet()
     {
+        Vector3 trans = new Vector3(transform.position.x+3,transform.position.y+5,transform.position.z);
         RaycastHit hit = new RaycastHit();
-        Ray ray = new Ray(transform.position, Vector3.forward);
-
-        if(Physics.Raycast(ray,out hit,Mathf.Infinity))
+        Ray ray = new Ray(trans, Vector3.forward);
+        if (Physics.Raycast(ray,out hit,Mathf.Infinity))
         {
             float distance = (hit.transform.position-transform.position ).magnitude;
             if(distance<=10)

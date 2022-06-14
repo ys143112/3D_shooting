@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletCtrl : MonoBehaviour
 {
-    private float spd = 1.1f;
+    private float spd = 5f;
 
     void Start()
     {
@@ -15,13 +15,17 @@ public class BulletCtrl : MonoBehaviour
     {
         Damage();
         Check();
-        Move();
+        
     }
 
+    private void FixedUpdate()
+    {
+        Move();
+    }
     void Move()
     {
+        spd += Time.fixedDeltaTime;
         transform.Translate(Vector3.back*spd);
-        
     }
 
     void Check()
@@ -31,21 +35,17 @@ public class BulletCtrl : MonoBehaviour
             SendMessageUpwards("PlusVoid", 1f, SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);
         }
-
-
     }
 
-    //CharacterCtrl에서 총알을 잘 체크 못한다면
     void Damage()
     {
         RaycastHit hit = new RaycastHit();
 
         Ray ray = new Ray(transform.position, -transform.forward);
-        //Debug.DrawRay(transform.position, ray.direction * 100, Color.white);
-
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            if(hit.collider.gameObject.CompareTag("Player"))
+            
+            if (hit.collider.gameObject.CompareTag("Player"))
             {
                 float distance = (transform.position - hit.transform.position).magnitude;
                 if (distance <= 8)

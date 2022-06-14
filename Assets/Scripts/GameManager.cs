@@ -22,17 +22,22 @@ public class GameManager : SingleTon<GameManager>
 
     void Update()
     {
-        if(InGame.activeSelf==true)
-            LockSpawn();
+        
 
     }
-    
+
+    private void FixedUpdate()
+    {
+        if (InGame.activeSelf == true)
+            LockSpawn();
+    }
+
     void LockSpawn()
     {
         repeatLock++;
-        if (repeatLock >= 30)
+        if (repeatLock >= 15)
             SpawnBullet();
-        NowDistance += Time.deltaTime * 10;
+        NowDistance += Time.fixedDeltaTime * 10;
     }
     void SpawnBullet()
     {

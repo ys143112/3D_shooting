@@ -6,10 +6,13 @@ public class UI_Ctrl : MonoBehaviour
 {
     private string voidTimes;
     private string distance;
+    GUIStyle style = new GUIStyle();
+
 
     void Start()
     {
-        
+        style.fontSize = 50;
+        style.normal.textColor = Color.white;
     }
 
     void Update()
@@ -20,11 +23,7 @@ public class UI_Ctrl : MonoBehaviour
 
     private void OnGUI()
     {
-        if (GUI.Button(new Rect(0,0,250,250), voidTimes))
-        {
-        }
-        if (GUI.Button(new Rect(0, 250, 250, 250), distance+"km"))
-        {
-        }
+        GUI.Label(new Rect(0, 0, 250, 250), "총알 피한 횟수 :" + voidTimes + "회",style);
+        GUI.Label(new Rect(0, 50, 250, 250), "현재 거리 :" + distance + "km",style);
     }
 }
