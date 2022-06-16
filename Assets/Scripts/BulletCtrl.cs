@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class BulletCtrl : MonoBehaviour
 {
     private float spd = 5f;
-
+    private float rotateTime = 5f;
     void Start()
     {
         
@@ -26,6 +26,12 @@ public class BulletCtrl : MonoBehaviour
     {
         spd += Time.fixedDeltaTime;
         transform.Translate(Vector3.back*spd);
+
+        float rotationVal = 30f;
+        Vector3 rotateVec = new Vector3(transform.rotation.x + rotationVal,
+            transform.rotation.y + rotationVal, transform.rotation.z + rotationVal);
+
+        transform.DORotate(rotateVec,rotateTime,RotateMode.WorldAxisAdd);
     }
 
     void Check()

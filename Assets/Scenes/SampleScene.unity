@@ -2646,7 +2646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   voidTime: 0
-  bullet: {fileID: 8088598843807355583, guid: 0ae377483d7fda6438d4547fcee1afa4, type: 3}
+  bullet: {fileID: 7044189439799522944, guid: 28d948cce454617429033db55a053cf8, type: 3}
   NowDistance: 0
   InGame: {fileID: 1180243149}
 --- !u!4 &1801449738
