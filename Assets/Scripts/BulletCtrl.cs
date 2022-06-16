@@ -5,7 +5,7 @@ using DG.Tweening;
 public class BulletCtrl : MonoBehaviour
 {
     private float spd = 5f;
-    private float rotateTime = 5f;
+    private float rotateTime = 3f;
     void Start()
     {
         
@@ -25,13 +25,13 @@ public class BulletCtrl : MonoBehaviour
     void Move()
     {
         spd += Time.fixedDeltaTime;
-        transform.Translate(Vector3.back*spd);
+        transform.Translate(Vector3.back * spd,Space.World);
 
-        float rotationVal = 30f;
+        float rotationVal = 180f;
         Vector3 rotateVec = new Vector3(transform.rotation.x + rotationVal,
             transform.rotation.y + rotationVal, transform.rotation.z + rotationVal);
 
-        transform.DORotate(rotateVec,rotateTime,RotateMode.WorldAxisAdd);
+        transform.DORotate(rotateVec,rotateTime);
     }
 
     void Check()
