@@ -24,14 +24,17 @@ public class BulletCtrl : MonoBehaviour
     }
     void Move()
     {
-        spd += Time.fixedDeltaTime;
-        transform.Translate(Vector3.back * spd,Space.World);
+        if(gameObject!=null)
+        {
+            spd += Time.fixedDeltaTime;
+            transform.Translate(Vector3.back * spd, Space.World);
 
-        float rotationVal = 180f;
-        Vector3 rotateVec = new Vector3(transform.rotation.x + rotationVal,
-            transform.rotation.y + rotationVal, transform.rotation.z + rotationVal);
-
-        transform.DORotate(rotateVec,rotateTime);
+            float rotationVal = 180f;
+            Vector3 rotateVec = new Vector3(transform.rotation.x + rotationVal,
+                transform.rotation.y + rotationVal, transform.rotation.z + rotationVal);
+            transform.DORotate(rotateVec, rotateTime);
+        }
+       
     }
 
     void Check()

@@ -11,9 +11,15 @@ public class GameManager : SingleTon<GameManager>
 
     private float repeatLock = 0f;
 
-    public float NowDistance = 0f;
+    public float nowDistance = 0f;
 
     public GameObject InGame = null;
+
+    public float ctrlDistance = 10f;
+
+    private float cnt = 0f;
+
+    private float Times = 0f;
 
     void Start()
     {
@@ -23,7 +29,6 @@ public class GameManager : SingleTon<GameManager>
     void Update()
     {
         
-
     }
 
     private void FixedUpdate()
@@ -37,8 +42,15 @@ public class GameManager : SingleTon<GameManager>
         repeatLock++;
         if (repeatLock >= 15)
             SpawnBullet();
-        NowDistance += Time.fixedDeltaTime * 10;
+        nowDistance += Time.fixedDeltaTime * ctrlDistance;
     }
+
+    IEnumerator GiftMoney()
+    {
+        
+        yield return null;
+    }
+
     void SpawnBullet()
     {
         GameObject child = Instantiate(bullet) as GameObject;

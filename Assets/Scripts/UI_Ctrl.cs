@@ -18,7 +18,7 @@ public class UI_Ctrl : MonoBehaviour
     void Update()
     {
         voidTimes = GameManager.Instance.voidTime.ToString();
-        distance = GameManager.Instance.NowDistance.ToString();
+        distance = GameManager.Instance.nowDistance.ToString();
     }
 
     private void OnGUI()

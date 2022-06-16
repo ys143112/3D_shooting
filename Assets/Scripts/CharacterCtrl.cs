@@ -4,7 +4,7 @@ using UnityEngine;
 using static UnityEngine.Mathf;
 using UnityEngine.Animations;
 
-public class CharacterCtrl : MonoBehaviour
+public class CharacterCtrl : SingleTon<CharacterCtrl>
 {
     public float spd = 25f;
 
@@ -80,10 +80,12 @@ public class CharacterCtrl : MonoBehaviour
         Vector3 trans = new Vector3(transform.position.x+3,transform.position.y+5,transform.position.z);
         RaycastHit hit = new RaycastHit();
         Ray ray = new Ray(trans, Vector3.forward);
+        
         if (Physics.Raycast(ray,out hit,Mathf.Infinity))
         {
+            Debug.DrawRay(trans, Vector3.forward*100,Color.white);
             float distance = (hit.transform.position-transform.position ).magnitude;
-            if(distance<=10)
+            if(distance<=20)
             {
                 hp -= 1;
                 Destroy(hit.transform.gameObject);

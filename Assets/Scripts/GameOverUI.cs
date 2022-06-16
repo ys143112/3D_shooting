@@ -19,7 +19,7 @@ public class GameOverUI : MonoBehaviour
     {
         voidTimeStr = GameManager.Instance.voidTime.ToString();
         voidTime.text = "회피 :" + voidTimeStr + "회";
-        pathDistanceStr = GameManager.Instance.NowDistance.ToString();
+        pathDistanceStr = GameManager.Instance.nowDistance.ToString();
         pathDistance.text = "진행 거리 :" + pathDistanceStr + "km";
         SetRank();
     }
