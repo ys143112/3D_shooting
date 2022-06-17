@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameOverUI : MonoBehaviour
+public class GameOverUI : SingleTon<GameOverUI>
 {
     public Text rankText = null;
     public Text voidTime = null;
     public Text pathDistance = null;
     public Button closeButton = null;
     public GameObject InGame = null;
-    public GameObject Main = null;
     public GameObject GameOverUI_ = null;
+    public GameObject Main = null;
 
     private string voidTimeStr = null;
     private string pathDistanceStr = null;
@@ -66,7 +66,6 @@ public class GameOverUI : MonoBehaviour
 
     IEnumerator FadeIn()
     {
-        
         Color color = closeButton.image.color;
         for(float i=1f;i>0f;i -= 0.1f)
         {
@@ -75,7 +74,6 @@ public class GameOverUI : MonoBehaviour
 
             yield return new WaitForSeconds(0.01f);
         }
-        CharacterCtrl.Instance.hp = 3f;
         InGame.SetActive(false);
         Main.SetActive(true);
     }

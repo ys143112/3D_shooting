@@ -10,7 +10,7 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
 
     public float hp = 3f;
 
-    public float barrier = 0f;
+    public float barrier = 1f;
 
     public enum CharacterStateType { Idle, Die }
 
@@ -20,6 +20,7 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
     public GameObject ingameUI = null;
 
     public Animator animationMecanim = null;
+
     void Start()
     {
         
@@ -59,6 +60,10 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
         {
             CharacterState = CharacterStateType.Die;
         }
+        else
+        {
+            CharacterState = CharacterStateType.Idle;
+        }
 
         switch (CharacterState)
         {
@@ -79,22 +84,26 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
     
     void CheckBullet()
     {
-        if(barrier>0f)
-        {
-            barrier--;
-            return;
-        }
+        
         Vector3 trans = new Vector3(transform.position.x+3,transform.position.y+5,transform.position.z);
         RaycastHit hit = new RaycastHit();
         Ray ray = new Ray(trans, Vector3.forward);
         
         if (Physics.Raycast(ray,out hit,Mathf.Infinity))
         {
+
             Debug.DrawRay(trans, Vector3.forward*100,Color.white);
             float distance = (hit.transform.position-transform.position ).magnitude;
             if(distance<=20)
             {
-                hp -= 1;
+                if (barrier > 0)
+                {
+                    barrier -= 1;
+                }
+                else
+                {
+                    hp -= 1;
+                }
                 Destroy(hit.transform.gameObject);
             }
         }

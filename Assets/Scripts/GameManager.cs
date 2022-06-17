@@ -23,6 +23,8 @@ public class GameManager : SingleTon<GameManager>
     public GameObject player = null;
 
 
+
+
     void Start()
     {
         InvokeRepeating("GiftMoney", 15f, 15f);
@@ -78,4 +80,5 @@ public class GameManager : SingleTon<GameManager>
     {
         voidTime += value;
     }
+
 }
