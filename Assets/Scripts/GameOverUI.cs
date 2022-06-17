@@ -11,6 +11,7 @@ public class GameOverUI : MonoBehaviour
     public Button closeButton = null;
     public GameObject InGame = null;
     public GameObject Main = null;
+    public GameObject GameOverUI_ = null;
 
     private string voidTimeStr = null;
     private string pathDistanceStr = null;
@@ -74,6 +75,7 @@ public class GameOverUI : MonoBehaviour
 
             yield return new WaitForSeconds(0.01f);
         }
+        CharacterCtrl.Instance.hp = 3f;
         InGame.SetActive(false);
         Main.SetActive(true);
     }

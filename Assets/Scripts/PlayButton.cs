@@ -6,7 +6,6 @@ public class PlayButton : MonoBehaviour
 {
     public GameObject InGame = null;
     public GameObject Main = null;
-
     public void StartBtn()
     {
         Main.SetActive(false);

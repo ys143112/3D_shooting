@@ -7,9 +7,8 @@ public class InGameUI : MonoBehaviour
 {
     public Text voidTime = null;
     public Text pathDistance = null;
+    public Text hp = null;
 
-    private string voidTimeStr = null;
-    private string pathDistanceStr = null;
 
     void Start()
     {
@@ -18,9 +17,9 @@ public class InGameUI : MonoBehaviour
 
     void Update()
     {
-        voidTimeStr = GameManager.Instance.voidTime.ToString();
-        voidTime.text = "회피 :" + voidTimeStr + "회";
-        pathDistanceStr = GameManager.Instance.nowDistance.ToString();
-        pathDistance.text = "진행 거리 :" + pathDistanceStr + "km";
+        voidTime.text = "회피 " + GameManager.Instance.voidTime.ToString() + "회";
+        pathDistance.text = "진행 거리 :" + GameManager.Instance.nowDistance.ToString() + "km";
+        hp.text = "목숨 :" + CharacterCtrl.Instance.hp.ToString();
+
     }
 }

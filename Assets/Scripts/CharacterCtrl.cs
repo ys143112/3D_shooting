@@ -10,6 +10,8 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
 
     public float hp = 3f;
 
+    public float barrier = 0f;
+
     public enum CharacterStateType { Idle, Die }
 
     private CharacterStateType CharacterState = CharacterStateType.Idle;
@@ -77,6 +79,11 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
     
     void CheckBullet()
     {
+        if(barrier>0f)
+        {
+            barrier--;
+            return;
+        }
         Vector3 trans = new Vector3(transform.position.x+3,transform.position.y+5,transform.position.z);
         RaycastHit hit = new RaycastHit();
         Ray ray = new Ray(trans, Vector3.forward);

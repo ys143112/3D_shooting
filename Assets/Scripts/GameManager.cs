@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameManager : SingleTon<GameManager>
 {
-    //플레이어가 총알을 회피한 횟수
     public float voidTime = 0f;
 
     public GameObject bullet = null;
@@ -17,18 +16,21 @@ public class GameManager : SingleTon<GameManager>
 
     public float ctrlDistance = 10f;
 
-    private float cnt = 0f;
+    public float money = 0f;
 
-    private float Times = 0f;
+    public GameObject statUI = null;
+
+    public GameObject player = null;
+
 
     void Start()
     {
-        
+        InvokeRepeating("GiftMoney", 15f, 15f);
+
     }
 
     void Update()
     {
-        
     }
 
     private void FixedUpdate()
@@ -45,11 +47,23 @@ public class GameManager : SingleTon<GameManager>
         nowDistance += Time.fixedDeltaTime * ctrlDistance;
     }
 
-    IEnumerator GiftMoney()
+    void GiftMoney()
     {
+        money += 40;
+        statUI.SetActive(true);
+        Time.timeScale = 0f;
         
-        yield return null;
     }
+
+    public void CloseStatUI()
+    {
+        Time.timeScale = 1f;
+
+        statUI.SetActive(false);
+    }
+
+
+
 
     void SpawnBullet()
     {
