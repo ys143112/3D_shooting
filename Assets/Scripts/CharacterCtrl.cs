@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.Mathf;
-using UnityEngine.Animations;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class CharacterCtrl : SingleTon<CharacterCtrl>
 {
@@ -18,6 +19,7 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
 
     public GameObject gameOverPanel = null;
     public GameObject ingameUI = null;
+    public Image ingameImage = null;
 
     public Animator animationMecanim = null;
 
@@ -102,11 +104,20 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
                 }
                 else
                 {
+                    StartCoroutine(DrawHit());
+                    ingameImage.DOFade(0, 0.5f);
                     hp -= 1;
+
                 }
                 Destroy(hit.transform.gameObject);
             }
         }
 
+    }
+
+    IEnumerator DrawHit()
+    {
+        ingameImage.DOColor(new Color(255, 0, 0, 150), 0.5f);
+        yield return new WaitForSeconds(0.5f);
     }
 }

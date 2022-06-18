@@ -13,7 +13,6 @@ public class BulletCtrl : MonoBehaviour
 
     void Update()
     {
-        Damage();
         Check();
         
     }
@@ -46,24 +45,6 @@ public class BulletCtrl : MonoBehaviour
         }
     }
 
-    void Damage()
-    {
-        RaycastHit hit = new RaycastHit();
-
-        Ray ray = new Ray(transform.position, -transform.forward);
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-        {
-            
-            if (hit.collider.gameObject.CompareTag("Player"))
-            {
-                float distance = (transform.position - hit.transform.position).magnitude;
-                if (distance <= 8)
-                {
-                    hit.transform.GetComponent<CharacterCtrl>().hp -= 1;
-                    Destroy(gameObject);
-                }
-            }
-        }
-    }
+    
 
 }
