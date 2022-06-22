@@ -22,17 +22,18 @@ public class GameManager : SingleTon<GameManager>
 
     public GameObject player = null;
 
-
+    public GameObject gameOverUI = null;
 
 
     void Start()
     {
-        InvokeRepeating("GiftMoney", 15f, 15f);
+
 
     }
 
     void Update()
     {
+        
     }
 
     private void FixedUpdate()
@@ -49,18 +50,21 @@ public class GameManager : SingleTon<GameManager>
         nowDistance += Time.fixedDeltaTime * ctrlDistance;
     }
 
-    void GiftMoney()
+    IEnumerator GiftMoney()
     {
-        money += 40;
-        statUI.SetActive(true);
-        Time.timeScale = 0f;
+        if(gameOverUI.activeSelf==false)
+        {
+            money += 40;
+            statUI.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        yield return new WaitForSeconds(15f);
         
     }
 
     public void CloseStatUI()
     {
         Time.timeScale = 1f;
-
         statUI.SetActive(false);
     }
 

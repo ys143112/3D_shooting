@@ -9,9 +9,10 @@ public class GameOverUI : SingleTon<GameOverUI>
     public Text voidTime = null;
     public Text pathDistance = null;
     public Button closeButton = null;
-    public GameObject InGame = null;
-    public GameObject GameOverUI_ = null;
-    public GameObject Main = null;
+    public GameObject ingameCamera = null;
+    public GameObject mainCamera = null;
+
+
 
     private string voidTimeStr = null;
     private string pathDistanceStr = null;
@@ -74,7 +75,7 @@ public class GameOverUI : SingleTon<GameOverUI>
 
             yield return new WaitForSeconds(0.01f);
         }
-        InGame.SetActive(false);
-        Main.SetActive(true);
+        ingameCamera.SetActive(false);
+        mainCamera.SetActive(true);
     }
 }

@@ -4,11 +4,25 @@ using UnityEngine;
 
 public class PlayButton : MonoBehaviour
 {
-    public GameObject InGame = null;
-    public GameObject Main = null;
+    public GameObject InGameCamera = null;
+    public GameObject MainCamera = null;
+    public GameObject gameoverPanel =null;
+
+    private void Start()
+    {
+        
+    }
     public void StartBtn()
     {
-        Main.SetActive(false);
-        InGame.SetActive(true);
+        MainCamera.SetActive(false);
+        InGameCamera.SetActive(true);
+        gameoverPanel.SetActive(false);
+        CharacterCtrl.Instance.CharacterState = CharacterCtrl.CharacterStateType.Idle;
+        CharacterCtrl.Instance.hp = 3;
+        GameManager.Instance.nowDistance = 0f;
+        GameManager.Instance.ctrlDistance = 10f;
+        CharacterCtrl.Instance.spd = 25f;
+        GameManager.Instance.voidTime = 0f;
+
     }
 }

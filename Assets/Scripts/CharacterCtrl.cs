@@ -15,7 +15,7 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
 
     public enum CharacterStateType { Idle, Die }
 
-    private CharacterStateType CharacterState = CharacterStateType.Idle;
+    public CharacterStateType CharacterState = CharacterStateType.Idle;
 
     public GameObject gameOverPanel = null;
     public GameObject ingameUI = null;
