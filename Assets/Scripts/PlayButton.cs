@@ -7,6 +7,7 @@ public class PlayButton : MonoBehaviour
     public GameObject InGameCamera = null;
     public GameObject MainCamera = null;
     public GameObject gameoverPanel =null;
+    public GameObject ingameCanvas = null;
 
     private void Start()
     {
@@ -23,6 +24,6 @@ public class PlayButton : MonoBehaviour
         GameManager.Instance.ctrlDistance = 10f;
         CharacterCtrl.Instance.spd = 25f;
         GameManager.Instance.voidTime = 0f;
-
+        ingameCanvas.SetActive(true);
     }
 }

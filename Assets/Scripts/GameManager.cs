@@ -12,8 +12,6 @@ public class GameManager : SingleTon<GameManager>
 
     public float nowDistance = 0f;
 
-    public GameObject InGame = null;
-
     public float ctrlDistance = 10f;
 
     public float money = 0f;
@@ -24,21 +22,23 @@ public class GameManager : SingleTon<GameManager>
 
     public GameObject gameOverUI = null;
 
+    public GameObject ingameCamera = null;
+
 
     void Start()
     {
-
+        InvokeRepeating("GiftMoney", 15, 15);
 
     }
 
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
     {
-        if (InGame.activeSelf == true)
+        if (ingameCamera.activeSelf== true)
             LockSpawn();
     }
 
@@ -50,7 +50,7 @@ public class GameManager : SingleTon<GameManager>
         nowDistance += Time.fixedDeltaTime * ctrlDistance;
     }
 
-    IEnumerator GiftMoney()
+    void GiftMoney()
     {
         if(gameOverUI.activeSelf==false)
         {
@@ -58,8 +58,6 @@ public class GameManager : SingleTon<GameManager>
             statUI.SetActive(true);
             Time.timeScale = 0f;
         }
-        yield return new WaitForSeconds(15f);
-        
     }
 
     public void CloseStatUI()

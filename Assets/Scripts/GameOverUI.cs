@@ -11,7 +11,7 @@ public class GameOverUI : SingleTon<GameOverUI>
     public Button closeButton = null;
     public GameObject ingameCamera = null;
     public GameObject mainCamera = null;
-
+    public GameObject ingameCanvas = null;
 
 
     private string voidTimeStr = null;
@@ -77,5 +77,8 @@ public class GameOverUI : SingleTon<GameOverUI>
         }
         ingameCamera.SetActive(false);
         mainCamera.SetActive(true);
+        ingameCanvas.SetActive(false);
+        
+        
     }
 }
