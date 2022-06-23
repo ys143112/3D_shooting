@@ -14,13 +14,14 @@ public class BulletCtrl : MonoBehaviour
     void Update()
     {
         Check();
-        
     }
 
     private void FixedUpdate()
     {
         Move();
     }
+
+    
     void Move()
     {
         if(gameObject!=null)

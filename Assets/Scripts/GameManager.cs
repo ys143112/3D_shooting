@@ -66,14 +66,14 @@ public class GameManager : SingleTon<GameManager>
         statUI.SetActive(false);
     }
 
-
-
-
     void SpawnBullet()
     {
         GameObject child = Instantiate(bullet) as GameObject;
         child.transform.SetParent(gameObject.transform, true);
         child.transform.position = new Vector3(Random.Range(-50, 50), Random.Range(-7.5f, 92.5f),300);
+
+        float pos = Random.Range(10, 20);
+        child.transform.localScale = new Vector3(pos, pos, pos);
         repeatLock = 0;
         
     }

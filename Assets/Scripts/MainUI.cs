@@ -7,6 +7,8 @@ public class MainUI : MonoBehaviour
     public Text rank = null;
     public GameObject tipTab = null;
     public GameObject shopPanel = null;
+    public GameObject setPanel = null;
+
     void Start()
     {
         
@@ -59,9 +61,20 @@ public class MainUI : MonoBehaviour
         }
     }
 
-    public void Open()
+    public void Open(int typeFlag)
     {
-        shopPanel.SetActive(true);
+        switch(typeFlag)
+        {
+            case 0:
+                shopPanel.SetActive(true);
+                break;
+            case 1:
+                setPanel.SetActive(true);
+                break;
+            case 2:
+                setPanel.SetActive(false);
+                break;
+        }
     }
 
     
