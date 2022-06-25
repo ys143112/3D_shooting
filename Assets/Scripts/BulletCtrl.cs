@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-public class BulletCtrl : MonoBehaviour
+public class BulletCtrl : SingleTon<BulletCtrl>
 {
-    private float spd = 5f;
-    private float rotateTime = 3f;
+    public float spd = 1f;
+    private float rotateTime = 4f;
     void Start()
     {
         
@@ -24,9 +24,9 @@ public class BulletCtrl : MonoBehaviour
     
     void Move()
     {
-        if(gameObject!=null)
+        if(gameObject.transform!=null)
         {
-            spd += Time.fixedDeltaTime;
+            spd += Time.fixedDeltaTime*4.9f;
             transform.Translate(Vector3.back * spd, Space.World);
 
             float rotationVal = 180f;
@@ -34,7 +34,7 @@ public class BulletCtrl : MonoBehaviour
                 transform.rotation.y + rotationVal, transform.rotation.z + rotationVal);
             transform.DORotate(rotateVec, rotateTime);
         }
-       
+
     }
 
     void Check()

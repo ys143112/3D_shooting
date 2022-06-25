@@ -6,7 +6,7 @@ public class GameManager : SingleTon<GameManager>
 {
     public float voidTime = 0f;
 
-    public GameObject bullet = null;
+    public float repeatVal = 15f;
 
     private float repeatLock = 0f;
 
@@ -24,28 +24,31 @@ public class GameManager : SingleTon<GameManager>
 
     public GameObject ingameCamera = null;
 
+    public GameObject bullet = null;
+
 
     void Start()
     {
-        InvokeRepeating("GiftMoney", 15, 15);
-
+        InvokeRepeating("GiftMoney", 15f, 15f);
+        InvokeRepeating("EventStage", 16f, 16f);
+        InvokeRepeating("CloseEvntStg", 18f, 18f);
     }
 
     void Update()
     {
-
     }
 
     private void FixedUpdate()
     {
         if (ingameCamera.activeSelf== true)
             LockSpawn();
+
     }
 
     void LockSpawn()
     {
         repeatLock++;
-        if (repeatLock >= 15)
+        if (repeatLock >= repeatVal)
             SpawnBullet();
         nowDistance += Time.fixedDeltaTime * ctrlDistance;
     }
@@ -81,6 +84,22 @@ public class GameManager : SingleTon<GameManager>
     public void PlusVoid(int value)
     {
         voidTime += value;
+    }
+
+    void EventStage()
+    {
+        repeatVal = 30f;
+        WallMove.Instance.scrollSpd = 15f;
+        BulletCtrl.Instance.spd = 5f;
+
+        
+    }
+
+    void CloseEvntStg()
+    {
+        repeatVal = 15f;
+        WallMove.Instance.scrollSpd = 5f;
+        BulletCtrl.Instance.spd = 1f;
     }
 
 }

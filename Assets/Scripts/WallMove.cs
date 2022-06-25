@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallMove : MonoBehaviour
+public class WallMove : SingleTon<WallMove>
 {
     public float scrollSpd = 5f;
     private Vector3 firstPos =Vector3.zero;
