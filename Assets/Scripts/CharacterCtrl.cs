@@ -52,6 +52,8 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
         position.y = Clamp(position.y, 0, 80);
 
         transform.position=position;
+        //Vector3 rotateVal =new Vector3(0,0, horizontal);
+        //transform.Rotate(rotateVal);
     }
 
 
@@ -105,7 +107,7 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
                 else
                 {
                     StartCoroutine(DrawHit());
-                    ingameImage.DOFade(0, 0.5f);
+                    ingameImage.material.DOFade(0,1f);
                     hp -= 1;
 
                 }
@@ -117,7 +119,8 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
 
     IEnumerator DrawHit()
     {
-        ingameImage.DOColor(new Color(255, 0, 0, 150), 0.5f);
-        yield return new WaitForSeconds(0.5f);
+        ingameImage.material.DOFade(1, 1f);
+        ingameImage.color = new Color(255, 0, 0, 155);
+        yield return new WaitForSeconds(1f);
     }
 }

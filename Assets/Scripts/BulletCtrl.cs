@@ -33,6 +33,7 @@ public class BulletCtrl : SingleTon<BulletCtrl>
             Vector3 rotateVec = new Vector3(transform.rotation.x + rotationVal,
                 transform.rotation.y + rotationVal, transform.rotation.z + rotationVal);
             transform.DORotate(rotateVec, rotateTime);
+            
         }
 
     }
