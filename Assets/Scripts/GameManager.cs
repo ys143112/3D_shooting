@@ -16,6 +16,8 @@ public class GameManager : SingleTon<GameManager>
 
     public float money = 0f;
 
+    private bool startCheck = false;
+
     public GameObject statUI = null;
 
     public GameObject player = null;
@@ -48,8 +50,11 @@ public class GameManager : SingleTon<GameManager>
     void LockSpawn()
     {
         repeatLock++;
+        if (repeatLock > 150) startCheck = true;
         if (repeatLock >= repeatVal)
+        {
             SpawnBullet();
+        }
         nowDistance += Time.fixedDeltaTime * ctrlDistance;
     }
 
@@ -71,14 +76,16 @@ public class GameManager : SingleTon<GameManager>
 
     void SpawnBullet()
     {
-        GameObject child = Instantiate(bullet) as GameObject;
-        child.transform.SetParent(gameObject.transform, true);
-        child.transform.position = new Vector3(Random.Range(-50, 50), Random.Range(-7.5f, 92.5f),300);
+        if(startCheck)
+        {
+            GameObject child = Instantiate(bullet) as GameObject;
+            child.transform.SetParent(gameObject.transform, true);
+            child.transform.position = new Vector3(Random.Range(-50, 50), Random.Range(-7.5f, 92.5f), 300);
 
-        float pos = Random.Range(10, 20);
-        child.transform.localScale = new Vector3(pos, pos, pos);
-        repeatLock = 0;
-        
+            float pos = Random.Range(10, 20);
+            child.transform.localScale = new Vector3(pos, pos, pos);
+            repeatLock = 0;
+        }
     }
 
     public void PlusVoid(int value)

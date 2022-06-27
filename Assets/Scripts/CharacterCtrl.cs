@@ -107,7 +107,6 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
                 else
                 {
                     StartCoroutine(DrawHit());
-                    ingameImage.material.DOFade(0,1f);
                     hp -= 1;
 
                 }
@@ -119,8 +118,9 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
 
     IEnumerator DrawHit()
     {
-        ingameImage.material.DOFade(1, 1f);
         ingameImage.color = new Color(255, 0, 0, 155);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
+        ingameImage.color = new Color(255,255,255, 0);
+
     }
 }
