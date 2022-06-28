@@ -93,36 +93,45 @@ public class MainUI : SingleTon<MainUI>
             case 4:
                 if(mainMoney>=20f)
                 {
-                    ingameSpaceShip.GetComponent<Material>().color = Color.yellow;
-                    spaceShip.GetComponent<Material>().color = Color.yellow;
+                    ingameSpaceShip.GetComponent<MeshRenderer>().material. color = Color.yellow;
+                    spaceShip.GetComponent<MeshRenderer>().material.color = Color.yellow;
+                    mainMoney -= 20f;
                 }
                 break;
             case 5:
                 if (mainMoney >= 20f)
                 {
-                    ingameSpaceShip.GetComponent<Material>().color = Color.red;
-                    spaceShip.GetComponent<Material>().color = Color.red;
+                    ingameSpaceShip.GetComponent<MeshRenderer>().material.color = Color.red;
+                    spaceShip.GetComponent<MeshRenderer>().material.color = Color.red;
+                    mainMoney -= 20f;
+
                 }
                 break;
             case 6:
                 if (mainMoney >= 20f)
                 {
-                    ingameSpaceShip.GetComponent<Material>().color = Color.green;
-                    spaceShip.GetComponent<Material>().color = Color.green;
+                    ingameSpaceShip.GetComponent<MeshRenderer>().material.color = Color.green;
+                    spaceShip.GetComponent<MeshRenderer>().material.color = Color.green;
+                    mainMoney -= 20f;
+
                 }
                 break;
             case 7:
                 if (mainMoney >= 20f)
                 {
-                    ingameSpaceShip.GetComponent<Material>().color = Color.gray;
-                    spaceShip.GetComponent<Material>().color = Color.gray;
+                    ingameSpaceShip.GetComponent<MeshRenderer>().material.color = Color.gray;
+                    spaceShip.GetComponent<MeshRenderer>().material.color = Color.gray;
+                    mainMoney -= 20f;
+
                 }
                 break;
             case 8:
                 if (mainMoney >= 20f)
                 {
-                    ingameSpaceShip.GetComponent<Material>().color = Color.blue;
-                    spaceShip.GetComponent<Material>().color = Color.blue;
+                    ingameSpaceShip.GetComponent<MeshRenderer>().material.color = Color.blue;
+                    spaceShip.GetComponent<MeshRenderer>().material.color = Color.blue;
+                    mainMoney -= 20f;
+
                 }
                 break;
                 

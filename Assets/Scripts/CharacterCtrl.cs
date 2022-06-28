@@ -22,6 +22,7 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
     public Image ingameImage = null;
 
     public Animator animationMecanim = null;
+    public GameObject barrierCheck = null;
 
     void Start()
     {
@@ -83,9 +84,14 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
 
     }
 
-    
+    IEnumerator BarrierCheck()
+    {
+        barrierCheck.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        barrierCheck.SetActive(false);
+    }
 
-    
+
     void CheckBullet()
     {
         
@@ -102,6 +108,7 @@ public class CharacterCtrl : SingleTon<CharacterCtrl>
             {
                 if (barrier > 0)
                 {
+                    StartCoroutine(BarrierCheck());
                     barrier -= 1;
                 }
                 else
