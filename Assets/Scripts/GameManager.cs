@@ -20,6 +20,8 @@ public class GameManager : SingleTon<GameManager>
 
     public GameObject statUI = null;
 
+    public GameObject ingameUI = null;
+
     public GameObject player = null;
 
     public GameObject gameOverUI = null;
@@ -64,6 +66,7 @@ public class GameManager : SingleTon<GameManager>
         {
             money += 40;
             statUI.SetActive(true);
+            ingameUI.SetActive(false);
             Time.timeScale = 0f;
         }
     }
@@ -72,6 +75,7 @@ public class GameManager : SingleTon<GameManager>
     {
         Time.timeScale = 1f;
         statUI.SetActive(false);
+        ingameUI.SetActive(true);
     }
 
     void SpawnBullet()
@@ -97,7 +101,7 @@ public class GameManager : SingleTon<GameManager>
     {
         repeatVal = 30f;
         WallMove.Instance.scrollSpd = 15f;
-        BulletCtrl.Instance.spd = 5f;
+        BulletCtrl.Instance.spd = 30f;
 
         
     }

@@ -27,10 +27,10 @@ public class UI_Ctrl : MonoBehaviour
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(0, 0, 250, 250), "총알 피한 횟수 :" + voidTimes + "회",style);
-        GUI.Label(new Rect(0, 50, 250, 250), "현재 거리 :" + distance + "km",style);
-        GUI.Label(new Rect(0, 100, 250, 250), "목숨 :" + hp , style);
-        GUI.Label(new Rect(0, 150, 250, 250), "보호막 :" + barrier_ , style);
+        //GUI.Label(new Rect(0, 0, 250, 250), "총알 피한 횟수 :" + voidTimes + "회", style);
+        //GUI.Label(new Rect(0, 50, 250, 250), "현재 거리 :" + distance + "km", style);
+        //GUI.Label(new Rect(0, 100, 250, 250), "목숨 :" + hp, style);
+        //GUI.Label(new Rect(0, 150, 250, 250), "보호막 :" + barrier_, style);
 
     }
 }

@@ -63,10 +63,10 @@ public class GameOverUI : SingleTon<GameOverUI>
     public void closeTab()
     {
         StartCoroutine(FadeIn());
-
+        AddMoney();
     }
 
-    void GetMoney()
+    void AddMoney()
     {
         MainUI.Instance.mainMoney+=50;
     }
